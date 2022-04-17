@@ -4,6 +4,8 @@ pluginManagement {
         google()
         mavenCentral()
         maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
+        maven { url 'https://jitpack.io' }
+
     }
 }
 dependencyResolutionManagement {
