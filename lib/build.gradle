@@ -1,53 +1,13 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'maven-publish'
-
-group = 'com.github.Amir-yazdanmanesh'
-version = '1.0.1'
-
-android {
-    compileSdk 31
-
-    defaultConfig {
-        minSdk 19
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    lintOptions {
-        textOutput 'stdout'
-        textReport true
-        lintConfig rootProject.file('lint.xml')
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+plugins {
+    id 'java-library'
+    id 'kotlin'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                // Applies the component for the release build variant.
-                from components.release
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.github.Amir-yazdanmanesh'
-                artifactId = 'AnnotationProcessors'
-                version = '1.0.1'
-            }
-
-        }
-    }
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.0"
     implementation "com.squareup:kotlinpoet:1.9.0"
